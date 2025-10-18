@@ -1,1 +1,58 @@
 สิ่งที่ได้ใน week06
+functional => ใช้ “ฟังก์ชัน” เป็นแกนหลักในการแก้ปัญหาและจัดการข้อมูล
+    - First-class function => ส่งฟังก์ชันเป็นอาร์กิวเมนต์ให้ฟังก์ชันอื่นได้ หรือ return ฟังก์ชันออกมาได้
+        function sayHello(name) {
+            return `Hello, ${name}`;
+        }
+
+        function greeter(fn, name) {
+            return fn(name); // ส่งฟังก์ชันเข้าไป
+        }
+
+        console.log(greeter(sayHello, "Alice")); // "Hello, Alice"
+
+    - Pure Function => input เดียวกัน → output เดียวกันเสมอ
+        // Pure
+        function add(a, b) {
+            return a + b;
+        }
+
+        // Not Pure (เพราะใช้ตัวแปรภายนอกมามีผลต่อผลลัพธ์)
+        let c = 10;
+        function addWithC(a) {
+            return a + c;
+        }
+    
+    - Immutability => ไม่แก้ไขข้อมูลเดิม แต่สร้างข้อมูลใหม่แทน
+        const numbers = [1, 2, 3];
+
+        // แทนที่จะเปลี่ยน numbers เดิม เราสร้างอาร์เรย์ใหม่
+        const doubled = numbers.map(n => n * 2);
+
+        console.log(numbers); // [1, 2, 3] (ไม่ถูกแก้ไข)
+        console.log(doubled); // [2, 4, 6]
+
+    - Higher-order functions => ฟังก์ชันที่รับฟังก์ชันอื่นเป็นพารามิเตอร์ หรือ return ฟังก์ชันออกมา
+        function multiplier(factor) {
+            return function(x) {
+                return x * factor;
+            };
+        }
+
+        const double = multiplier(2);
+        console.log(double(5)); // 10
+
+    - Declarative Style => "บอกว่าอยากได้ผลลัพธ์แบบไหน" โดยไม่เน้นลงรายละเอียดว่าต้องทำ "อย่างไรทีละขั้นตอน"
+        // Imperative
+        let numbers = [1, 2, 3, 4];
+        let evens = [];
+        for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i] % 2 === 0) {
+                evens.push(numbers[i]);
+            }
+        }
+
+        // Functional (Declarative)
+        let evens2 = numbers.filter(n => n % 2 === 0);
+
+        console.log(evens2); // [2, 4]

@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@400;600&display=swap');
+
+:root {
+  --font-color: #00ffe0;
+  --font-size: 18px;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: radial-gradient(circle at top left, #0b0f19, #000);
+  color: var(--font-color);
+  font-size: var(--font-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: all 0.4s ease;
+}
+
+/* ฟอร์มหลัก */
+.form-container {
+  background: rgba(20, 25, 35, 0.7);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow:
+    0 0 25px rgba(0, 255, 255, 0.05),
+    inset 0 0 8px rgba(255, 0, 255, 0.05);
+  backdrop-filter: blur(20px);
+  padding: 40px;
+  width: 320px;
+  text-align: center;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* หัวข้อ */
+h1 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  background: linear-gradient(90deg, #00f5ff, #ff00d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* input + select */
+.form-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  color: #9bbbd4;
+}
+
+input[type="color"],
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  color: #00f5ff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+input[type="color"]:hover,
+select:hover {
+  box-shadow: 0 0 10px rgba(0,255,255,0.3);
+}
+
+/* ปุ่ม */
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  margin: 0 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+}
+
+.save {
+  background: linear-gradient(90deg, #00f5ff, #006aff);
+  color: white;
+}
+
+.reset {
+  background: #1b1e2b;
+  color: #d6eaff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.save:hover {
+  box-shadow: 0 0 15px #00f5ffaa;
+  transform: translateY(-2px);
+}
+
+.reset:hover {
+  background: #22283a;
+}
+
+/* เอฟเฟกต์โฟกัส */
+input:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 10px #00f5ff99;
+}
+
+/* Preview box */
+.preview {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(20, 25, 35, 0.5);
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+  transition: all 0.3s ease;
+}
