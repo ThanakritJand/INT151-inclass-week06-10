@@ -1,0 +1,71 @@
+// --------------------------------------------
+// 🧭 STEP 1: เข้าถึง <ul id="soup">
+// --------------------------------------------
+const ulParent = document.getElementById("soup");
+console.log("STEP 1: ulParent =", ulParent);
+
+// => ผลลัพธ์: <ul id="soup">...</ul>
+
+
+// --------------------------------------------
+// 🥦 STEP 2: ค้นหา soup ประเภท vegan
+// --------------------------------------------
+const veganSoups = document.querySelectorAll(".vegan");
+console.log("STEP 2: Vegan soups =", veganSoups);
+
+// => NodeList [ <li>Mushroom Soup</li>, <li>Pumpkin Soup</li> ]
+
+
+// --------------------------------------------
+// 🍖 STEP 3: ค้นหา soup ประเภท meat
+// --------------------------------------------
+const meatSoups = document.querySelectorAll(".meat");
+console.log("STEP 3: Meat soups =", meatSoups);
+
+// => NodeList [ <li>Beef Soup</li>, <li>Chicken Soup</li> ]
+
+
+// --------------------------------------------
+// 🥩 STEP 4: หาว่ามี soup ไหนเป็น Beef Soup
+// --------------------------------------------
+let beefSoupElement = null;
+meatSoups.forEach(element => {
+  if (element.textContent.trim().includes("Beef Soup")) {
+    beefSoupElement = element;
+  }
+});
+console.log("STEP 4: Found Beef Soup element =", beefSoupElement);
+
+// => <li class="meat">Beef Soup</li>
+
+
+// --------------------------------------------
+// 🍽️ STEP 5: หา sibling (ถัดไปจาก Appetizer)
+// --------------------------------------------
+const getidApp = document.getElementById("appetizer");
+console.log("STEP 5: Next element after Appetizer =", getidApp.nextElementSibling);
+
+// => <p>Main Course</p>
+
+
+// --------------------------------------------
+// 🧾 STEP 6: เข้าถึง input ชื่อ fname ในฟอร์ม
+// --------------------------------------------
+const getFirstName = document.getElementsByName("fname");
+console.log("STEP 6: Form input (fname) =", getFirstName[0]);
+
+// => <input type="text" name="fname">
+
+
+// --------------------------------------------
+// 📋 STEP 7: ตรวจสอบ tag ทั้งหมดที่เป็น <li>
+// --------------------------------------------
+const li = document.getElementsByTagName("li");
+console.log("STEP 7: All <li> =", li);
+
+
+// --------------------------------------------
+// 🌱 STEP 8: ตรวจสอบ element ที่มี class="vegan"
+// --------------------------------------------
+const vegan = document.getElementsByClassName("vegan");
+console.log("STEP 8: All vegan soups =", vegan);

@@ -1,0 +1,81 @@
+  ----------------------------------------------------
+  1. Root / Document Nodes
+  ----------------------------------------------------
+  - document.documentElement:
+
+  ตัวอย่างโค้ด: const html = document.documentElement;
+  const firstNode = document.firstChild; const
+  firstElementChildNode = document.firstElementChild;
+  ----------------------------------------------------
+
+2. Create Elements
+
+1.  สร้าง element ใหม่: document.createElement(“p”)
+2.  ใส่ attribute: element.setAttribute(“id”, “int141”)
+3.  ใส่ข้อความ: element.textContent = “INT141”
+4.  แทรกเข้า DOM: document.body.appendChild(element)
+
+  ----------------------------------------------------
+  3. Query DOM Elements
+  ----------------------------------------------------
+  - document.querySelector(“#id”) คืน element
+  แรกที่เจอ - document.querySelectorAll(“.class”) คืน
+  NodeList ทั้งหมด - document.getElementById(“id”) -
+  document.getElementsByClassName(“class”) -
+  document.getElementsByTagName(“tag”) -
+  document.getElementsByName(“name”)
+
+  ----------------------------------------------------
+
+4. Relationships
+
+-   previousElementSibling: พี่ตัวก่อนหน้า
+-   nextElementSibling: ตัวถัดไป
+-   parentElement: พ่อแม่ของ element
+
+  ----------------------------------------------------
+  5. Modify Content
+  ----------------------------------------------------
+  beefSoupElement.textContent = “Beef Stew”
+
+  ----------------------------------------------------
+
+6. Add / Remove Node
+
+const newLi = document.createElement(“li”) newLi.textContent = “Tom Yum
+Soup” soupUl.appendChild(newLi)
+
+soupUl.removeChild(chickenElement)
+
+  ----------------------------------------------------
+  7. Event Flow (Capturing / Bubbling)
+  ----------------------------------------------------
+  - addEventListener(type, listener, true) → capture
+  phase - addEventListener(type, listener, false) →
+  bubble phase - e.preventDefault():
+  ยกเลิกพฤติกรรมเริ่มต้น (form, link) -
+  e.stopPropagation(): หยุดการส่งต่อ event
+
+  ----------------------------------------------------
+
+8. Form Example
+
+const submitBtn = document.querySelector(“input[type=‘submit’]”)
+submitBtn.addEventListener(“click”, (e) => { e.preventDefault() const
+inputs = document.querySelectorAll(“input”) inputs.forEach(i =>
+console.log(i.getAttribute(“type”))) })
+
+  ----------------------------------------------------
+  9. Practice Tasks
+  ----------------------------------------------------
+  1. เพิ่ม Tomato Soup ที่ต้นลิสต์ 2. คลิก
+
+  ----------------------------------------------------
+
+สรุป
+
+-   เข้าถึง DOM: getElementById, querySelector, querySelectorAll, ฯลฯ
+-   สร้าง/แก้ไข Node: createElement, setAttribute, textContent
+-   โครงสร้างความสัมพันธ์: parentElement, sibling
+-   Event Flow: capture → target → bubble
+-   ป้องกัน default action ด้วย preventDefault()

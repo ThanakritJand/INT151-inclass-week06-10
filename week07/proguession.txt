@@ -1,0 +1,59 @@
+// --------------------------------------------
+// 1️⃣ ตรวจสอบ node ต่าง ๆ ของ document
+// --------------------------------------------
+
+// <html> ทั้งหมด
+const html = document.documentElement;
+
+// node แรกสุดใน document (มักเป็น #document)
+const firstNode = document.firstChild;
+
+// element แรกสุด (คือ <html>)
+const firstElementChildNode = document.firstElementChild;
+
+// node สุดท้าย (มักเป็น comment หรือ script)
+const lastNode = document.lastChild;
+
+// element สุดท้ายใน document (คือ <html>)
+const lastElementChildNode = document.lastElementChild;
+
+// console.log(html, firstNode, firstElementChildNode, lastNode, lastElementChildNode);
+
+
+// --------------------------------------------
+// 2️⃣ ตรวจสอบว่า body เป็น ELEMENT_NODE
+// --------------------------------------------
+if (document.body.nodeType === Node.ELEMENT_NODE) {
+  console.log("✅ Node is an element");
+}
+
+
+// --------------------------------------------
+// 3️⃣ เข้าถึง element ที่มี id = "subject"
+// (❌ ของเดิมผิด เพราะ getElementById ไม่ต้องใส่เครื่องหมาย #)
+// --------------------------------------------
+const p = document.getElementById("subject"); // ✅ ไม่ต้องมี "#"
+
+
+// --------------------------------------------
+// 4️⃣ สร้าง <p> ใหม่ใน DOM
+// --------------------------------------------
+const create = document.createElement("p");  // สร้าง <p></p>
+
+
+// --------------------------------------------
+// 5️⃣ สร้าง attribute id="int141" ให้ <p>
+// --------------------------------------------
+create.setAttribute("id", "int141"); // หรือจะใช้ create.id = "int141" ก็ได้
+
+
+// --------------------------------------------
+// 6️⃣ เพิ่มข้อความภายใน <p>
+// --------------------------------------------
+create.textContent = "INT141";
+
+
+// --------------------------------------------
+// 7️⃣ แทรก <p id="int141">INT141</p> เข้าไปใน <body>
+// --------------------------------------------
+document.body.appendChild(create);

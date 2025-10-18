@@ -1,0 +1,92 @@
+==============================
+LOCALSTORAGE ใน JAVASCRIPT
+==============================
+
+1. ความหมาย
+-------------
+localStorage คือ Web Storage API ชนิดหนึ่งใน Browser ที่สามารถเก็บข้อมูลแบบ Key-Value
+บนเครื่องผู้ใช้ (Client Side) โดยข้อมูลจะไม่หายแม้ปิด Browser
+
+- localStorage ต่างจาก sessionStorage
+  - localStorage: เก็บถาวร, ใช้ได้แม้ปิด/เปิด Browser
+  - sessionStorage: เก็บชั่วคราว, ข้อมูลหายเมื่อปิด Tab/Browser
+
+2. การเข้าถึง localStorage
+-------------------------
+- อ่านค่า:
+  let value = localStorage.getItem('key');
+
+- เขียนค่า:
+  localStorage.setItem('key', 'value');
+
+- ลบค่า:
+  localStorage.removeItem('key');
+
+- ลบทั้งหมด:
+  localStorage.clear();
+
+- ตรวจสอบจำนวน item:
+  let count = localStorage.length;
+
+- เข้าถึง key โดย index:
+  let keyName = localStorage.key(index);
+
+3. การเก็บข้อมูลแบบ object
+--------------------------
+localStorage เก็บข้อมูลเป็น string เท่านั้น
+ถ้าต้องการเก็บ object/array ต้องแปลงเป็น JSON
+
+- เก็บ object:
+  const user = { name: 'John', age: 25 };
+  localStorage.setItem('user', JSON.stringify(user));
+
+- ดึง object:
+  const user = JSON.parse(localStorage.getItem('user'));
+
+4. การใช้งานตัวอย่าง
+--------------------
+1) เก็บข้อความ:
+  localStorage.setItem('greeting', 'Hello World');
+  console.log(localStorage.getItem('greeting')); // Hello World
+
+2) เก็บ array:
+  const fruits = ['apple', 'banana', 'orange'];
+  localStorage.setItem('fruits', JSON.stringify(fruits));
+  const storedFruits = JSON.parse(localStorage.getItem('fruits'));
+
+3) นับจำนวนครั้งผู้ใช้เข้าเว็บ:
+  let visits = localStorage.getItem('visits');
+  visits = visits ? parseInt(visits) + 1 : 1;
+  localStorage.setItem('visits', visits);
+  console.log(`You visited ${visits} times`);
+
+5. ข้อจำกัด
+------------
+- ขนาด: ประมาณ 5-10MB ต่อ domain
+- เก็บ string เท่านั้น
+- ไม่สามารถเข้าถึงข้าม domain ได้
+- ไม่มีระบบ security พิเศษ (ข้อมูลถูกเก็บแบบ plain text)
+
+6. วิธีเช็ค localStorage
+-----------------------
+- Browser console:
+  console.log(localStorage);
+- ผ่าน DevTools -> Application -> Local Storage
+
+7. การทำงานร่วมกับ events
+-------------------------
+- ฟัง event เมื่อ localStorage เปลี่ยน (cross-tab)
+  window.addEventListener('storage', (e) => {
+    console.log('Key changed:', e.key);
+    console.log('Old Value:', e.oldValue);
+    console.log('New Value:', e.newValue);
+  });
+
+8. เคล็ดลับ / best practices
+-----------------------------
+- ใช้ JSON.stringify / JSON.parse สำหรับ object/array
+- ตรวจสอบว่าค่าไม่ null ก่อน parse
+- ลบ item ที่ไม่ใช้เพื่อประหยัดพื้นที่
+- ใช้ prefix กับ key เพื่อป้องกันชนกัน เช่น: 'app1_user'
+
+==============================
